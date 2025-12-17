@@ -6,7 +6,8 @@
   <script src="https://cdn.tailwindcss.com"></script>
 
   <script>
-    const ARDUINO_IP = "http://10.192.244.122";
+    // Cambia esta URL por la que te da ngrok
+    const ARDUINO_IP = "https://abc123.ngrok.io";
 
     async function actualizarEstado() {
       try {
@@ -41,11 +42,9 @@
 
 <body class="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 text-slate-100 flex flex-col">
 
-<!-- NAVBAR -->
 <nav class="w-full border-b border-white/10 bg-black/30 backdrop-blur">
   <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
     <span class="text-sm font-semibold tracking-wide">Smart Home</span>
-
     <div class="flex gap-2 text-sm">
       <a href="./index.html" class="px-3 py-2 rounded-lg hover:bg-white/10 transition">Inicio</a>
       <a href="./Page1.html" class="px-3 py-2 rounded-lg bg-white/10">Estado</a>
@@ -55,51 +54,32 @@
   </div>
 </nav>
 
-<!-- CONTENIDO -->
 <main class="flex-1 w-full flex items-center justify-center p-4">
   <div class="w-full max-w-md">
     <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-xl p-6">
-
       <div class="mb-4">
         <h1 class="text-2xl font-bold tracking-tight">Estado del Sistema</h1>
         <p class="text-sm text-slate-300">
           Monitoreo en tiempo real de dispositivos
         </p>
       </div>
-
       <div class="space-y-4">
-
-        <!-- LED 1 -->
         <section class="rounded-xl border border-white/10 bg-black/20 p-4 flex justify-between items-center">
           <div>
             <p class="text-sm text-slate-300">LED 1</p>
-            <span id="led1-estado"
-              class="text-xs px-2 py-1 rounded-full border border-white/10">
-              --
-            </span>
+            <span id="led1-estado" class="text-xs px-2 py-1 rounded-full border border-white/10">--</span>
           </div>
         </section>
-
-        <!-- LED 2 -->
         <section class="rounded-xl border border-white/10 bg-black/20 p-4 flex justify-between items-center">
           <div>
             <p class="text-sm text-slate-300">LED 2</p>
-            <span id="led2-estado"
-              class="text-xs px-2 py-1 rounded-full border border-white/10">
-              --
-            </span>
+            <span id="led2-estado" class="text-xs px-2 py-1 rounded-full border border-white/10">--</span>
           </div>
         </section>
-
       </div>
-
     </div>
   </div>
 </main>
 
 </body>
 </html>
-
-
-
-
