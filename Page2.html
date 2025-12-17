@@ -6,7 +6,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
 
   <script>
-    const ARDUINO_IP = "http://10.192.244.122";
+    const ARDUINO_IP = "https://4ef43882e15a.ngrok-free.app";
 
     async function actualizarEstado() {
       try {
@@ -51,11 +51,9 @@
 
 <body class="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 text-slate-100 flex flex-col">
 
-<!-- NAVBAR -->
 <nav class="w-full border-b border-white/10 bg-black/30 backdrop-blur">
   <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
     <span class="text-sm font-semibold tracking-wide">Smart Home</span>
-
     <div class="flex gap-2 text-sm">
       <a href="./index.html" class="px-3 py-2 rounded-lg hover:bg-white/10 transition">Inicio</a>
       <a href="./Page1.html" class="px-3 py-2 rounded-lg hover:bg-white/10 transition">Estado</a>
@@ -67,41 +65,27 @@
 
 <main class="flex-1 flex items-center justify-center p-4">
   <div class="w-full max-w-md space-y-4">
-
-    <!-- LED1 -->
     <section class="rounded-xl border border-white/10 bg-black/20 p-4">
       <div class="flex justify-between items-center">
         <div>
           <p class="text-sm text-slate-300">LED1</p>
           <span id="led1-estado"></span>
         </div>
-        <button id="led1-btn"
-          class="rounded-xl px-5 py-3 font-semibold bg-emerald-500 hover:bg-emerald-400 transition">
-        </button>
+        <button id="led1-btn" class="rounded-xl px-5 py-3 font-semibold bg-emerald-500 hover:bg-emerald-400 transition"></button>
       </div>
     </section>
 
-    <!-- LED2 -->
     <section class="rounded-xl border border-white/10 bg-black/20 p-4">
       <div class="flex justify-between items-center">
         <div>
           <p class="text-sm text-slate-300">LED2</p>
           <span id="led2-estado"></span>
         </div>
-        <button id="led2-btn"
-          class="rounded-xl px-5 py-3 font-semibold bg-emerald-500 hover:bg-emerald-400 transition">
-        </button>
+        <button id="led2-btn" class="rounded-xl px-5 py-3 font-semibold bg-emerald-500 hover:bg-emerald-400 transition"></button>
       </div>
     </section>
-
   </div>
 </main>
 
 </body>
 </html>
-
-
-
-
-
-
