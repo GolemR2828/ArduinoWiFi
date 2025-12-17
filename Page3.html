@@ -6,12 +6,9 @@
   <script src="https://cdn.tailwindcss.com"></script>
 
   <script>
-    const ARDUINO_IP = "http://10.192.244.122";
+    const ARDUINO_IP = "https://4ef43882e15a.ngrok-free.app";
 
-    let estado = {
-      foco1: false,
-      foco2: false
-    };
+    let estado = { foco1: false, foco2: false };
 
     async function actualizarEstado() {
       try {
@@ -32,15 +29,13 @@
 
       if (encendido) {
         chip.textContent = "ON";
-        chip.className =
-          "text-xs px-2 py-1 rounded-full bg-emerald-500/15 text-emerald-200 border border-emerald-400/20";
+        chip.className = "text-xs px-2 py-1 rounded-full bg-emerald-500/15 text-emerald-200 border border-emerald-400/20";
         toggle.style.transform = "translateX(1.75rem)";
         base.classList.add("bg-emerald-500/30");
         base.classList.remove("bg-rose-500/25");
       } else {
         chip.textContent = "OFF";
-        chip.className =
-          "text-xs px-2 py-1 rounded-full bg-rose-500/15 text-rose-200 border border-rose-400/20";
+        chip.className = "text-xs px-2 py-1 rounded-full bg-rose-500/15 text-rose-200 border border-rose-400/20";
         toggle.style.transform = "translateX(0)";
         base.classList.add("bg-rose-500/25");
         base.classList.remove("bg-emerald-500/30");
@@ -76,56 +71,41 @@
 <main class="flex-1 w-full p-4">
   <div class="mx-auto max-w-2xl">
     <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-
       <h1 class="text-2xl font-bold">Panel Casa Inteligente</h1>
-
       <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
 
-        <!-- FOCO 1 -->
         <section class="rounded-xl border border-white/10 bg-black/20 p-4">
           <div class="flex justify-between items-center">
             <div>
               <p class="text-sm text-slate-300">Foco 1</p>
               <span id="led1-estado" class="text-xs px-2 py-1 rounded-full border">--</span>
             </div>
-
             <div onclick="toggleFoco(1)" class="cursor-pointer">
               <span class="relative inline-flex h-8 w-14 rounded-full bg-rose-500/25 border transition">
-                <span id="led1-toggle"
-                      class="inline-block h-6 w-6 rounded-full bg-white shadow transition"></span>
+                <span id="led1-toggle" class="inline-block h-6 w-6 rounded-full bg-white shadow transition"></span>
               </span>
             </div>
           </div>
         </section>
 
-        <!-- FOCO 2 -->
         <section class="rounded-xl border border-white/10 bg-black/20 p-4">
           <div class="flex justify-between items-center">
             <div>
               <p class="text-sm text-slate-300">Foco 2</p>
               <span id="led2-estado" class="text-xs px-2 py-1 rounded-full border">--</span>
             </div>
-
             <div onclick="toggleFoco(2)" class="cursor-pointer">
               <span class="relative inline-flex h-8 w-14 rounded-full bg-rose-500/25 border transition">
-                <span id="led2-toggle"
-                      class="inline-block h-6 w-6 rounded-full bg-white shadow transition"></span>
+                <span id="led2-toggle" class="inline-block h-6 w-6 rounded-full bg-white shadow transition"></span>
               </span>
             </div>
           </div>
         </section>
 
       </div>
-
     </div>
   </div>
 </main>
 
 </body>
 </html>
-
-
-
-
-
-
