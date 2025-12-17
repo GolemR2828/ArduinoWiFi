@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Control LED</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    const ARDUINO_IP = "http://AQUI_VA_LA_IP_DEL_ARDUINO";
+
+    async function actualizarEstado() {
+      try {
+        const res = await fetch(`${ARDUINO_IP}/estado`);
+        const data = await res.json();
+
+        actualizarLED("led1", data.foco1);
+        actualizarLED("led2", data.foco2);
+      } catch (e) {
+        console.log("Arduino no accesible");
+      }
+    }
+
+    function actualizarLED(id, estado) {
+      const estadoSpan = document.getElementById(id + "-estado");
+      const boton = document.getElementById(id + "-btn");
+
+      if (estado) {
+        estadoSpan.textContent = "ON";
+        estadoSpan.className = "text-xs px-2 py-1 rounded-full bg-emerald-500/15 text-emerald-200 border border-emerald-400/20";
+        boton.textContent = "Apagar";
+        boton.onclick = () => enviarComando(id + "off");
+        boton.className = boton.className.replace("bg-emerald-500", "bg-rose-500");
+      } else {
+        estadoSpan.textContent = "OFF";
+        estadoSpan.className = "text-xs px-2 py-1 rounded-full bg-rose-500/15 text-rose-200 border border-rose-400/20";
+        boton.textContent = "Encender";
+        boton.onclick = () => enviarComando(id + "on");
+        boton.className = boton.className.replace("bg-rose-500", "bg-emerald-500");
+      }
+    }
+
+    function enviarComando(ruta) {
+      fetch(`${ARDUINO_IP}/${ruta}`);
+      setTimeout(actualizarEstado, 500);
+    }
+
+    setInterval(actualizarEstado, 2000);
+    window.onload = actualizarEstado;
+  </script>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 text-slate-100 flex flex-col">
+
+<!-- NAVBAR -->
+<nav class="w-full border-b border-white/10 bg-black/30 backdrop-blur">
+  <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
+    <span class="text-sm font-semibold">ESP32 Smart Home</span>
+    <a href="/index.html" class="px-3 py-2 rounded-lg hover:bg-white/10">Inicio</a>
+  </div>
+</nav>
+
+<main class="flex-1 flex items-center justify-center p-4">
+  <div class="w-full max-w-md space-y-4">
+
+    <!-- LED1 -->
+    <section class="rounded-xl border border-white/10 bg-black/20 p-4">
+      <div class="flex justify-between items-center">
+        <div>
+          <p class="text-sm text-slate-300">LED1</p>
+          <span id="led1-estado"></span>
+        </div>
+        <button id="led1-btn"
+          class="rounded-xl px-5 py-3 font-semibold bg-emerald-500 hover:bg-emerald-400 transition">
+        </button>
+      </div>
+    </section>
+
+    <!-- LED2 -->
+    <section class="rounded-xl border border-white/10 bg-black/20 p-4">
+      <div class="flex justify-between items-center">
+        <div>
+          <p class="text-sm text-slate-300">LED2</p>
+          <span id="led2-estado"></span>
+        </div>
+        <button id="led2-btn"
+          class="rounded-xl px-5 py-3 font-semibold bg-emerald-500 hover:bg-emerald-400 transition">
+        </button>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+</body>
+</html>
